@@ -8,6 +8,12 @@ services:
     ports:
       # 將主機的 8000 端口映射到容器的 8000 端口 (與 Dockerfile 暴露的 port 要一樣)
       - "8000:8000"
+    environment:
+      - MYSQL_USER=root # 上面服務名稱叫什麼這邊就一樣的
+      - MYSQL_PASSWORD=test
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=product
 
     depends_on:
       # 確保 mysql 服務先於 API
@@ -20,10 +26,10 @@ services:
     image: mysql:8.0
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: test
-      MYSQL_DATABASE: product
-      MYSQL_USER: product
-      MYSQL_PASSWORD: test
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=product
     ports:
       - "3306:3306" 
     volumes:

@@ -39,11 +39,48 @@ your_project_root/
 ```
 
 
-# API 端點
+## 使用指南：使用 Docker Compose 運行
 
-你可以在瀏覽器中開啟 `http://127.0.0.1:8000/docs` 來查看自動產生的 Swagger UI API 文件，或 `http://127.0.0.1:8000/redoc` 查看 ReDoc 文件。
+### 前提條件：
 
-主要的產品相關端點定義在 `api/routers/product.py` 中，前綴為 `/products`：
+* 您的系統已經安裝 Docker 和 Docker Compose。如果尚未安裝，可以參考 [Docker 安裝指南](https://docs.docker.com/get-docker/) 和 [Docker Compose 安裝指南](https://docs.docker.com/compose/install/)。
+
+### 步驟：
+
+1. **下載專案並進入專案目錄**：
+    ```bash
+    git clone https://github.com/HCH0629/product_service
+    cd product_service
+    ```
+
+2. **啟動 Docker Compose**：
+    使用 Docker Compose 來啟動所有必要的服務，包括應用程式和資料庫。
+    ```bash
+    docker-compose up -d
+    ```
+    * **說明**：
+        * `docker-compose up -d`：在背景模式下啟動所有服務。
+        * `-d`：讓容器在後台運行。
+
+3. **檢查容器狀態**：
+    確保所有服務運行正常。
+    ```bash
+    docker-compose ps
+    ```
+
+4. **訪問服務**：
+    * 服務將在 `http://127.0.0.1:8000` 提供。
+    * 您可以在瀏覽器中進行 API 測試，或者使用 `curl` 或 Postman 進行交互。
+
+    ```bash
+    curl -X 'POST' \
+        'http://127.0.0.1:8000/create_short_url' \
+        -H 'accept: application/json' \
+        -H 'Content-Type: application/json' \
+        -d '{
+        "original_url": "https://example.com/"
+        }'
+    ```
 
 ---
 
@@ -133,7 +170,6 @@ your_project_root/
 *   **成功響應 (200 OK)**：
     ```json
     {
-        "id": 1,
         "name": "Star",
         "code": "A-001",
         "category": "cloth",
@@ -177,7 +213,6 @@ your_project_root/
 *   **成功響應 (200 OK)**：
     ```json
     {
-        "id": 1,
         "name": "Star Updated",
         "code": "A-001",
         "category": "cloth",

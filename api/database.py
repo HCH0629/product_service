@@ -28,9 +28,6 @@ class MySQLManager:
         self.database_url = database_url
         self.engine: Engine = None
         self.SessionLocal = None
-        # MySQL 連線參數，可以根據需要調整
-        self.connect_args = {} 
-
 
     def create_engine(self):
         """建立 SQLAlchemy 引擎"""
