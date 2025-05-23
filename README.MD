@@ -87,8 +87,8 @@ your_project_root/
         "color": "Black"
     }'
     ```
-    # 預期成功回應 (201 Created):
-    # {"name":"Cool Gadget","code":"CG-001","category":"Electronics","unit_price":99.99,"inventory":150,"size":"M","color":"Black"}
+    **預期成功回應 (201 Created):**
+    * {"name":"Cool Gadget","code":"CG-001","category":"Electronics","unit_price":99.99,"inventory":150,"size":"M","color":"Black"}
 
 
 ---
