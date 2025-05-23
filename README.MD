@@ -72,15 +72,24 @@ your_project_root/
     * 服務將在 `http://127.0.0.1:8000` 提供。
     * 您可以在瀏覽器中進行 API 測試，或者使用 `curl` 或 Postman 進行交互。
 
+    # 範例：使用 curl 建立一個新產品
     ```bash
-    curl -X 'POST' \
-        'http://127.0.0.1:8000/create_short_url' \
-        -H 'accept: application/json' \
-        -H 'Content-Type: application/json' \
-        -d '{
-        "original_url": "https://example.com/"
-        }'
+    curl -X POST 'http://127.0.0.1:8000/products/' \
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "name": "Cool Gadget",
+        "code": "CG-001",
+        "category": "Electronics",
+        "unit_price": 99.99,
+        "inventory": 150,
+        "size": "M",
+        "color": "Black"
+    }'
     ```
+    # 預期成功回應 (201 Created):
+    # {"name":"Cool Gadget","code":"CG-001","category":"Electronics","unit_price":99.99,"inventory":150,"size":"M","color":"Black"}
+
 
 ---
 
